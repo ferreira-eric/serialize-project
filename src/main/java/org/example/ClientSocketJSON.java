@@ -16,9 +16,6 @@ public class ClientSocketJSON {
         Socket clientSocket;
         try {
             clientSocket = new Socket("localhost", 6788);
-            //ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
-            //ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
-            //outToServer.writeObject(p1);
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String json = reader.readLine();
             System.out.println("JSON received: " + json);

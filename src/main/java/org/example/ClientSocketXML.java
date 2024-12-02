@@ -1,7 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.example.dto.OrderRequest;
+import org.example.dto.ContactBook;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class ClientSocketXML {
             System.out.println("XML received: " + xml);
 
             XmlMapper mapper = new XmlMapper();
-            OrderRequest contactBook = mapper.readValue(xml, OrderRequest.class);
+            ContactBook contactBook = mapper.readValue(xml, ContactBook.class);
             System.out.println(contactBook.toString());
 
             clientSocket.close();

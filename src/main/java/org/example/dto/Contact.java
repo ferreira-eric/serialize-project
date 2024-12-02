@@ -18,13 +18,11 @@ public class Contact implements Serializable {
     private String name;
     private String phoneNumber;
     private String email;
-    private String photo;
 
-    public Contact(String name, String phoneNumber, String email, String photo) {
+    public Contact(String name, String phoneNumber, String email) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.photo = photo;
     }
 
     @Override
@@ -33,7 +31,6 @@ public class Contact implements Serializable {
                 "name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", photo='" + photo + '\'' +
                 '}';
     }
 }

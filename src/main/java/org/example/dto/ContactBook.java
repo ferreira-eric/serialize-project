@@ -3,7 +3,6 @@ package org.example.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.dto.Contact;
 
 import java.io.Serial;
 import java.io.Serializable;

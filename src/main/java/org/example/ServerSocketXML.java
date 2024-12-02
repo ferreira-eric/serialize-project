@@ -1,24 +1,40 @@
 package org.example;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.example.dto.OrderRequest;
-import org.example.dto.Product;
+import org.example.dto.Contact;
+import org.example.dto.ContactBook;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerSocketXML {
     public static void main(String[] args) {
         int port = 6787;
 
-        OrderRequest orderRequest = new OrderRequest();
-        orderRequest.setProducts(Arrays.asList(
-                new Product("pc", 2222, 2),
-                new Product("tv", 111111, 1)));
+        var contact = Contact.builder()
+                .name("Paulo")
+                .email("example@ufc.br")
+                .phoneNumber("4002-8922")
+                .build();
+
+        var contact1 = Contact.builder()
+                .name("Rego")
+                .email("example@dc.ufc.br")
+                .phoneNumber("9090-9090")
+                .build();
+
+        List<Contact> listContact = new ArrayList<>();
+        listContact.add(contact);
+        listContact.add(contact1);
+
+        var contactList = ContactBook.builder()
+                .contactLists(listContact)
+                .build();
 
         try {
             System.out.println("Initialize Server...");
@@ -30,7 +46,7 @@ public class ServerSocketXML {
                 System.out.println("Connection accept ");
 
                 XmlMapper mapper = new XmlMapper();
-                String json = mapper.writeValueAsString(orderRequest);
+                String json = mapper.writeValueAsString(contactList);
 
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
                 writer.write(json);
