@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "utils.protobuf";
+option java_outer_classname = "ContactBookProto";
+
+message Contact {
+  string name = 1;
+  string phoneNumber = 2;
+  string email = 3;
+}
+
+message ContactBook {
+  repeated Contact contactLists = 1;
+}
