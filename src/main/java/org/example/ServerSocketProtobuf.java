@@ -38,9 +38,14 @@ public class ServerSocketProtobuf {
             while (true) {
                 Socket connectionSocket = listenSocket.accept();
                 System.out.println("Connection accept ");
+
+                long initialTime = System.currentTimeMillis();
+
                 ObjectOutputStream outToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
                 outToClient.writeObject(contactList);
                 System.out.println("Send Object with successful");
+
+                System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
             }
         } catch (IOException e) {
             System.out.println("Server Error: " + e.getMessage());

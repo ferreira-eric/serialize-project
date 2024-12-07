@@ -14,6 +14,7 @@ public class ClientSocketProtobuf {
 
         Socket clientSocket;
         try {
+            long initialTime = System.currentTimeMillis();
             clientSocket = new Socket("localhost", 6767);
             ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
 
@@ -22,6 +23,7 @@ public class ClientSocketProtobuf {
 
             System.out.println(receive.toString());
 
+            System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
         } catch (IOException e) {
             System.out.println("Client Error: " + e.getMessage());
         } catch (ClassNotFoundException e) {

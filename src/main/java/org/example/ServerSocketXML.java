@@ -45,6 +45,8 @@ public class ServerSocketXML {
                 Socket connectionSocket = listenSocket.accept();
                 System.out.println("Connection accept ");
 
+                long initialTime = System.currentTimeMillis();
+
                 XmlMapper mapper = new XmlMapper();
                 String json = mapper.writeValueAsString(contactList);
 
@@ -53,6 +55,8 @@ public class ServerSocketXML {
                 writer.newLine();
                 writer.flush();
                 System.out.println("Send Object XML with successful");
+
+                System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
             }
         } catch (IOException e) {
             System.out.println("Server Error: " + e.getMessage());

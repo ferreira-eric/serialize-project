@@ -10,7 +10,6 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ServerSocketJSON {
@@ -46,6 +45,8 @@ public class ServerSocketJSON {
                 Socket connectionSocket = listenSocket.accept();
                 System.out.println("Connection accept ");
 
+                long initialTime = System.currentTimeMillis();
+
                 ObjectMapper mapper = new ObjectMapper();
                 String json = mapper.writeValueAsString(contactList);
                 byte[] jsonBytes = json.getBytes();
@@ -58,6 +59,8 @@ public class ServerSocketJSON {
                 writer.flush();
                 System.out.println("Send Object JSON with successful: " + json);
                 System.out.println("Json length: " + dataLength);
+
+                System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
             }
         } catch (IOException e) {
             System.out.println("Server Error: " + e.getMessage());

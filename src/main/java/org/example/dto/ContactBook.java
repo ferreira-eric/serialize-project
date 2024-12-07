@@ -4,8 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serial;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class ContactBook implements Serializable {
     @Serial
     private static final long serialVersionUID = 2118935321917023301L;
-    private List<Contact> contactLists = new ArrayList<>();
+    private List<Contact> contactLists;
 
     public ContactBook(List<Contact> contactLists) {
         this.contactLists = contactLists;

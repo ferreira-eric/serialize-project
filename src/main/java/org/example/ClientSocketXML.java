@@ -16,6 +16,7 @@ public class ClientSocketXML {
 
         Socket clientSocket;
         try {
+            long initialTime = System.currentTimeMillis();
             clientSocket = new Socket("localhost", 6787);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -27,6 +28,8 @@ public class ClientSocketXML {
             System.out.println(contactBook.toString());
 
             clientSocket.close();
+
+            System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
         } catch (IOException e) {
             System.out.println("Client Error: " + e.getMessage());
         }

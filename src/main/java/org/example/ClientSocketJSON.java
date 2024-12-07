@@ -15,6 +15,8 @@ public class ClientSocketJSON {
 
         Socket clientSocket;
         try {
+            long initialTime = System.currentTimeMillis();
+
             clientSocket = new Socket("localhost", 6788);
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String json = reader.readLine();
@@ -25,6 +27,8 @@ public class ClientSocketJSON {
             System.out.println(contactBook.toString());
 
             clientSocket.close();
+
+            System.out.println("execution time: " + (System.currentTimeMillis() - initialTime));
         } catch (IOException e) {
             System.out.println("Client Error: " + e.getMessage());
         }
